@@ -1,3 +1,25 @@
+# Brainlab-Fork
+
+## Release
+
+Check the release for the node and registry binaries
+
+## Building
+
+Follow the build instructions provided by the original authors for conan with linux.
+
+### Observed issues with described build process
+
+- missing system dependencies for avahi
+  - install avahi dependencies (may be more than needed)
+
+  ```bash
+  > sudo apt-get install avahi-daemon avahi-utils libavahi-client-dev libavahi-common-dev libavahi-compat-libdnssd-dev
+  ```
+
+- No binary
+  - Make sure the `make` command was actually executed (may happen when copying over whole code block)
+
 # Getting Started
 
 The following instructions describe how to set up and build this software.
@@ -6,6 +28,7 @@ The test platforms include Windows with Visual Studio 2017 and 2019, and Linux w
 Specific instructions for [cross-compiling for Raspberry Pi](Raspberry-Pi.md) are also provided.
 
 Notes:
+
 - **Visual Studio 2013 is not supported**, because it does not implement C++11 [thread-safe function-local static initialization](https://en.cppreference.com/w/cpp/language/storage_duration#Static_local_variables).
 - For the same reason, Visual Studio 2015 onwards with ``/Zc:threadSafeInit-``, and GCC with ``--fno-threadsafe-statics``, are also not supported.
 
@@ -59,6 +82,7 @@ Cache Variable | Default | Description
 **Windows**
 
 For example, using the Visual Studio 2019 Developer Command Prompt:
+
 ```sh
 cd <home-dir>\nmos-cpp\Development
 mkdir build
@@ -149,6 +173,7 @@ The application can also be run with other options, for example to run a single 
 Use ``--help`` to display usage information.
 
 Notes:
+
 - On Windows, the correct configuration of the C++ REST SDK library (e.g. cpprestsdk140_2_10.dll or cpprest140_2_10d.dll) needs to be on the ``PATH`` or copied into the output directory.
 - Intermittent failures of the DNS Service Discovery (DNS-SD) tests may be encountered because short time-outs and no retries are used in the test code.
   However if these tests fail repeatedly a system problem may need to be diagnosed.
@@ -172,7 +197,7 @@ python3 nmos-test.py
 
 It takes some time to start as it fetches the RAML and JSON Schema files from the AMWA NMOS specification repositories on GitHub.
 
-Check the web service is running by opening http://localhost:5000/ in a browser.
+Check the web service is running by opening <http://localhost:5000/> in a browser.
 
 There are several test suites for NMOS Nodes which can be run from the web service.
 
@@ -182,7 +207,7 @@ For example, to test **nmos-cpp-node**, try:
 nmos-cpp-node "{\"http_port\":8080}"
 ```
 
-Check it is running by opening http://localhost:8080/ in a browser.
+Check it is running by opening <http://localhost:8080/> in a browser.
 
 Then run the "IS-04 Node API", "IS-05 Connection Management API" and "IS-05 Interaction with Node API" test suites from the web service.
 
@@ -194,7 +219,7 @@ For example, to test **nmos-cpp-registry**, try:
 nmos-cpp-registry "{\"http_port\":1080}"
 ```
 
-Check it is running by opening http://localhost:1080/ in a browser.
+Check it is running by opening <http://localhost:1080/> in a browser.
 
 Then try running the "IS-04 Registry APIs" test suites from the web service.
 
